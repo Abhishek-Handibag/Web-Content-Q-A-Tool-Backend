@@ -81,6 +81,14 @@ def scrape_url(url):
         logger.error(f"Error scraping {url}: {str(e)}")
         return {'error': f"Error scraping {url}: {str(e)}"}
 
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({
+        "status": "success",
+        "message": "Server is running",
+        "timestamp": datetime.now().isoformat()
+    })
+
 @app.route('/fetch-content', methods=['POST'])
 def fetch_content():
     start_time = time.time()
